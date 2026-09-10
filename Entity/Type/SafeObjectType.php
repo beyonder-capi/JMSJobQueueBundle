@@ -3,13 +3,13 @@
 namespace JMS\JobQueueBundle\Entity\Type;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Symfony\Component\TypeInfo\Type\Type;
+use Doctrine\DBAL\Types\Type;
 
 class SafeObjectType extends Type
 {
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform): string
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform): string
     {
-        return $platform->getBlobTypeDeclarationSQL($fieldDeclaration);
+        return $platform->getBlobTypeDeclarationSQL($column);
     }
 
     public function getName(): string
