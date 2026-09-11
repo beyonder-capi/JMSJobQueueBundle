@@ -124,7 +124,7 @@ class Job
     #[ORM\Column(type: 'datetime', name: 'closedAt', nullable: true)]
     private ?\DateTime $closedAt = null;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'string', length: 255)]
     private $command;
 
     #[ORM\Column(type: 'json')]
@@ -156,8 +156,8 @@ class Job
     #[ORM\OneToMany(targetEntity: Job::class, mappedBy: 'originalJob', cascade: ['persist', 'remove', 'detach', 'refresh'])]
     private Collection $retryJobs;
 
-    #[ORM\Column(type: 'binary', name: 'stackTrace', nullable: true)]
-    private ?string $stackTrace = null;
+    #[ORM\Column(name: 'stackTrace', type: 'blob', nullable: true)]
+    private $stackTrace = null;
 
     #[ORM\Column(type: 'smallint', nullable: true, options: ['unsigned' => true])]
     private ?int $runtime = null;
